@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authors</title>
+    
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <link href="/css/app.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+    <h1>Author index page</h1>
+    <nav>
+        <a href="#">Nowhere link</a>
+    </nav>
+
+    <ul>
+        <h1>Available Authors</h1>
+        <p>Click on a name to read their Bio</p>
+
+        <% for (let i = 0; i < authors.length; i++ ) { %>
+            <li>
+                <!-- SHOW link here  -->
+                <a href="/author/<%=authors[i].id%>"><%=authors[i].name%></a><br>
+            </li>
+        <% } %>
+
+    </ul>
+    
+</body>
+    
+</html>
