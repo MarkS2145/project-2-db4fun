@@ -29,8 +29,9 @@
       <p id=#lastUpdated>last updated: <%=user.updatedAt%></p> 
     </form>
     <br />
-    <form action="/users/<%= user.id %>?_method=DELETE" method="POST">
-      <input id=#delete type="submit" value="Delete User" />
+
+    <form action="/users/<%=user.id %>?_method=DELETE" method="POST">
+      <input id=#delete type="submit" value="Delete Profile" onclick="return confirm('You will be removed from Journal Journey. Are you sure?');">
     </form>
 
     <br /><br />

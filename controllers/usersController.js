@@ -20,13 +20,15 @@ router.get("/profile/:id", (req, res) => {
 //RR7: DESTROY HTTPVerb: DELETE Purpose: Destroy User SEQ: DESTROY
 router.delete('/:id', (req, res) => {
 
-  UserModel.destroy({ where: { id: req.params.id } }).then(() => { 
-      res.redirect('/user/');  //redirect back to user homepage
+  //let destroyUser = confirm("Want to delete yourself from Journal Journey?")
+    UserModel.destroy({ where: { id: req.params.id } }).then(() => {
+      res.redirect('/');  //redirect back to user homepage
     });
+});
+  
+  
 
-  }) ;
-
-//RR5: EDIT HTTPVerb: PUT Purpose: Update Player info SEQ: UPDATE
+//RR5: EDIT HTTPVerb: PUT Purpose: Update User info SEQ: UPDATE
 router.put('/profile/:id', (req, res) => {
     
   let changeStatus = "changes made";
