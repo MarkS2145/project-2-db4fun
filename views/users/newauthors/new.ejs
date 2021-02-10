@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Pokemon</title>
+</head>
+<body>
+    <h1>Create New Pokemon page</h1>
+    <!-- NOTE: Action will be the route, method will be the HTTP verb -->
+    <form action="/pokemon" method="POST">
+        name: <input type="text" name="name" /><br/>
+        img: <input type="text" name="img" />
+        <a href="https://pokemondb.net/pokedex/all" target="_blank" rel="noopener noreferrer">: Pokedex - Find image, copy url </a>
+        <br><br>
+        <input type="submit" name="" value="Create Pokemon"/><br>
+        
+    </form>
+</body>
+</html>
