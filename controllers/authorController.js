@@ -13,7 +13,10 @@ router.get('/', (req, res) => {
 });  //Done
 
 //RR2: NEW HTTPVerb: GET Purpose: Display form for NEW Pokemon SEQ: n/a
-// --- NOT IMEPLEMENTED AS NOT NEEDED ---
+router.get('/new', (req, res) => {
+  console.log('/new GET caught 003 renders(new.ejs)');
+  res.render('../views/authors/new.ejs');
+});
   
 //RR3: CREATE HTTPVerb: POST Purpose: Add NEW Author to db SEQ: CREATE
 // router.post('/', (req, res) => {
@@ -46,10 +49,10 @@ router.get('/:id', (req, res) => {
     });
 });
 
-// Login GET Route - displays page
-// router.get('/login', (req, res) => {
-//     res.render('../views/user/login.ejs')
-//   } );
+//Login GET Route - displays page
+router.get('/login', (req, res) => {
+    res.render('../views/authors/login.ejs')
+  } );
   
 // Login POST Route - determines if login successful from db
 // router.post('/login', (req, res) => {

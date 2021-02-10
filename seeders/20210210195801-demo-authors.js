@@ -31,7 +31,7 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          name: 'officia blanditiis',
+          name: 'Cicero',
           bio: 'Cum, deserunt at quae inventore, ipsa explicabo doloremque veniam optio consequatur quo cumque blanditiis perspiciatis necessitatibus dolor illum officia eum culpa aspernatur nemo excepturi expedita! Non ratione repellendus quasi pariatur deserunt, tempore hic provident, culpa laborum est facilis, exercitationem cumque corporis tenetur.',
           valediction: 'Lorem ipsum dolor sit amet.',
           imageURL: 'https://cdn.britannica.com/58/181058-050-9CC9F60F/Marcus-Tullius-Cicero-detail-marble-bust-Capitoline.jpg',

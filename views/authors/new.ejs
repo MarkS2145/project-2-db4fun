@@ -3,18 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Pokemon</title>
+    <title>New Author Sign Up</title>
 </head>
 <body>
-    <h1>Create New Pokemon page</h1>
+    <h1>Author Bio Creation</h1>
     <!-- NOTE: Action will be the route, method will be the HTTP verb -->
-    <form action="/pokemon" method="POST">
+    <form action="/author" method="POST">
         name: <input type="text" name="name" /><br/>
-        img: <input type="text" name="img" />
-        <a href="https://pokemondb.net/pokedex/all" target="_blank" rel="noopener noreferrer">: Pokedex - Find image, copy url </a>
+        <textarea id="bio" name="bio" rows="7" cols="50" >add bio details here...</textarea>
+        <br>
+        <textarea id="valediction"  name="valediction" rows="2" cols="50" >add valediction here...</textarea>
+        <br>
+        imageURL:<input type="text" name="imageURL" />
         <br><br>
-        <input type="submit" name="" value="Create Pokemon"/><br>
-        
+        <input type="submit" name="" value="Add Author"/><br>
     </form>
 </body>
 </html>
