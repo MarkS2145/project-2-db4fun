@@ -19,6 +19,19 @@
 
 <br>
 
+## setting Envirnment Variables
+The .env file contains our environment variables that are an intergal part fo this code.  
+
+WARNING:  
+1. This file should NOT be hosted with the application when in production.
+1. The authentication seed should be changed in production to ensure security of authentication data
+
+## Managing our tables with test data
+the following commands run from terminal allow us to set up our database in a known configuration.  These commands were used extensively during development.
+1. Drop all tables:  `npx sequelize db:migrate:undo:all`
+1. Re-migrate:  `npx sequelize db:migrate`
+1. Re-seed our tables:  `npx sequelize db:seed:all`
+
 ## Routes
 
 You have the following routes available.
