@@ -25,14 +25,19 @@
       <input type="checkbox" name="subscribed" <%=user.subscribed%> />
       <br />
       <br />
-      <input type="submit" value="Edit Profile" />
+      <input id=#edit type="submit" value="Edit Profile" />
+      <p id=#lastUpdated>last updated: <%=user.updatedAt%></p> 
     </form>
     <br />
     <form action="/users/<%= user.id %>?_method=DELETE" method="POST">
-      <input type="submit" value="Delete User" />
+      <input id=#delete type="submit" value="Delete User" />
     </form>
 
     <br /><br />
     <a href="/">Back to Homepage</a>
+    <footer>
+      <p>© 2021 Blue Baby Yoda Productions</p>
+      <p>Love, Love</p>
+    </footer>
   </body>
 </html>
