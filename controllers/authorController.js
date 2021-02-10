@@ -19,13 +19,13 @@ router.get('/new', (req, res) => {
 });
   
 //RR3: CREATE HTTPVerb: POST Purpose: Add NEW Author to db SEQ: CREATE
-// router.post('/', (req, res) => {
-//   console.log(req.body)
+router.post('/', (req, res) => {
+  console.log(req.body)
 
-//   AuthorModel.create(req.body).then((authors) => {
-//     res.render('../views/authors/signup.ejs')
-//   })
-// });
+  AuthorModel.create(req.body).then((authors) => {
+    res.redirect('/author/')
+  })
+});
 
 //RR4: SHOW HTTPVerb: GET Purpose: Show one Player SEQ: FINDBYPK
 router.get('/:id', (req, res) => {
