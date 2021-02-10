@@ -7,6 +7,13 @@ const UserModel = require("../models").User;
 router.get("/profile/:id", (req, res) => {
   console.log(req.user);
   UserModel.findByPk(req.params.id).then((userProfile) => {
+
+    console.log("before ternary: " + userProfile.subscribed);
+
+    userProfile.subscribed = ( userProfile.subscribed == true ? 'checked' : '' );
+    
+    console.log("after ternary: " + userProfile.subscribed);
+    
     res.render("users/profile.ejs", {
       user: userProfile,
     });
