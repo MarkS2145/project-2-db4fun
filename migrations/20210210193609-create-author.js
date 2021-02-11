@@ -21,11 +21,6 @@ module.exports = {
       imageURL: {
         type: Sequelize.STRING
       },
-      userID: {
-        allowNull: true,
-        type: Sequelize.INTEGER,
-        foreignKey: true
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

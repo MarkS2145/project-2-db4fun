@@ -10,7 +10,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      //Author.hasOne(models.User, { foreignKey: "authorId" });
+      
     }
   };
   Author.init({
@@ -18,7 +19,6 @@ module.exports = (sequelize, DataTypes) => {
     bio: DataTypes.TEXT,
     valediction: DataTypes.STRING,
     imageURL: DataTypes.STRING,
-    userID: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Author',

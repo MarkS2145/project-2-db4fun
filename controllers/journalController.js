@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
+
+const UserModel = require("../models").User;
+const AuthorModel = require('../models').Author;
 const JournalModel = require('../models').Journal;
 
 //BASE ROUTE === app.use("/journal"
