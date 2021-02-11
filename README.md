@@ -100,7 +100,17 @@ RR = Restful routes.
 - RR6: EDIT HTTPVerb: PUT Purpose: Update Player info SEQ: UPDATE
 
 
-<br>
+## Heroku Deployment
+we ahve successfully deployed the Journal Journey app to Heroku.
+
+1. Index/Homepage route: https://journaljourney.herokuapp.com/
+1. We should use `git push heroku main`
+1. We need to be in `Heroku run bash` to:
+Once in bash, 
+1. To migrate the db use: `npx sequelize db:migrate`
+1. To seed the db with our default values, run: `npx sequelize db:migrate`
+
+
 
 ## Additional Resources
 
