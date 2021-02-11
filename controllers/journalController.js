@@ -137,7 +137,7 @@ router.delete('/:id', (req, res) => {
   console.log("Destroy journal by id: " + req.params.id);
 
   JournalModel.destroy({ where: { id: req.params.id } }).then(() => {
-    res.redirect('/');  
+    res.redirect('/journal/');  
   });
 
 });
