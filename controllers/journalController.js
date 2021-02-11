@@ -57,7 +57,7 @@ router.get('/:id', (req, res) => {
 
     JournalModel.findByPk(req.params.id, {
       //include: [{model: Teams}, { model: Pokemon}],
-    }).then((author) => {
+    }).then((journal) => {
       // Teams.findAll().then((teams) => {
       //     console.log("Found by ID, Obj[] follows:");
       //     console.log(user.id);
