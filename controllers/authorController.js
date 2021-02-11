@@ -27,6 +27,28 @@ router.post('/', (req, res) => {
   })
 });
 
+//RR4: SHOW HTTPVerb: GET Purpose: Show Edit for an Author SEQ: FINDBYPK
+router.get('/:id/edit', (req, res) => {
+
+  console.log("Edit author by id: " + req.params.id)  ;
+  // Sequelize
+
+  AuthorModel.findByPk(req.params.id, {
+    //include: [{model: Teams}, { model: Pokemon}],
+  }).then((author) => {
+    // Teams.findAll().then((teams) => {
+    //     console.log("Found by ID, Obj[] follows:");
+    //     console.log(user.id);
+    //     //console.log(teams);
+        //console.log(player.teams);
+        res.render('../views/authors/edit.ejs', { 
+          author, 
+          //teams 
+        // });
+      });
+  });
+});
+
 //RR4: SHOW HTTPVerb: GET Purpose: Show one Player SEQ: FINDBYPK
 router.get('/:id', (req, res) => {
 
@@ -101,26 +123,27 @@ router.get('/login', (req, res) => {
 //   } );
 
 //RR7: DESTROY HTTPVerb: DELETE Purpose: Destroy User SEQ: DESTROY
-// router.delete('/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
 
-//     User.destroy({ where: { id: req.params.id } }).then(() => { 
-//       res.redirect('/user/');  //redirect back to user homepage
-//     });
+  console.log("Destroy author by id: " + req.params.id);
 
-//   }) ;
+  AuthorModel.destroy({ where: { id: req.params.id } }).then(() => {
+    res.redirect('/');  
+  });
+
+});
 
 //RR5: EDIT HTTPVerb: PUT Purpose: Update Player info SEQ: UPDATE
-// router.put('/:id', (req, res) => {
-//     //Sequelize
-//     User.update(req.body, {
-//       where: { id: req.params.id },
-//       returning: true,
-//     }).then((user) => {
-//       console.group(`changes made`);
-//       console.log(user);
-//       res.redirect('/user/profile/' + req.params.id ) // => index page
-//     });
-// });
+router.put('/:id', (req, res) => {
+    AuthorModel.update(req.body, {
+      where: { id: req.params.id },
+      returning: true,
+    }).then((author) => {
+      console.group(`changes made`);
+      console.log(author);
+      res.redirect(`/author/${req.params.id}/edit` ) 
+    });
+});
   
 
 

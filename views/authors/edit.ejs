@@ -6,13 +6,30 @@
         <link rel="stylesheet" href="/css/app.css">
     </head>
     <body>
-        <h1>Edit Pokemon Page</h1>
-        <form action="/pokemon/<%=pokemon.id%>?_method=PUT" method="POST">
-            <!-- {/*  NOTE: the form is pre-populated with values for the server */} -->
-            name: <input type="text" name="name" value="<%=pokemon.name%>"/>
-            image: <input type="text" name="img" value="<%=pokemon.img%>"/>
-                    
-            <input type="submit" name="" value="Submit Changes"/>
+        <h1>Edit <%=author.name%> Author Page</h1>
+        <form action="/author/<%=author.id%>?_method=PUT" method="POST">
+            <p id=#nameTag>Name:</p><input type="text" name="name" value="<%=author.name %>"/><br/>
+            <p id=#bioTag></p>Bio:</p><textarea id="bio" name="bio" rows="7" cols="50" ><%=author.bio%></textarea>
+            <br>
+            <p id=#valedictionTag></p>Valediction:</p>
+            <textarea id="valediction"  name="valediction" rows="2" cols="50" ><%=author.valediction%></textarea>
+            <br>
+            <p id=#imageURLTag>imageURL:</p><input type="text" name="imageURL" value=<%=author.imageURL%> />
+            <br><br>
+            <img src="<%=author.imageURL%>" alt="Display image of <%=author.name%> " width="500" height="600">
+            <br>
+            <input type="submit" name="" value="Submit Changes"/><br>
+            <p id=#lastUpdated>last updated: <%=author.updatedAt%></p><br>
         </form>
+        <form action="/author/<%=author.id %>?_method=DELETE" method="POST">
+            <input id=#delete type="submit" value="Delete Profile" onclick="return confirm('You will be removed from our Author list on Journal Journey. Are you sure?');">
+          </form>
+      
+          <br /><br />
+          <a href="/">Back to Homepage</a>
+          <footer>
+            <p>© 2021 Blue Baby Yoda Productions</p>
+            <p>Love, Love</p>
+          </footer>
     </body>
 </html>
