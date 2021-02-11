@@ -111,6 +111,9 @@ Once in bash,
 1. To seed the db with our default values, run: `npx sequelize db:migrate`
 
 
+## Improvements
+the following is a list of improvements that could be made to enhance this application in the future.  
+
 
 ## Additional Resources
 
