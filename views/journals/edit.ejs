@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="stylesheet" href="/css/app.css">
+        <title>Edit Journal</title>
+    </head>
+    <body>
+        <h1>Edit <%=journal.name%> Journal Page</h1>
+        <form action="/journal/<%=journal.id%>?_method=PUT" method="POST">
+            <p id=#titleTag>Title:</p><input type="text" name="title" value="<%=journal.title %>"/><br/>
+             <p id=#journalBodyTag></p>Body:</p><textarea id=#biody name="body" rows="7" cols="50" ><%=journal.body%></textarea>
+            <br>
+            <br>
+            <p id=#imageURLTag>imageURL:</p><input type="text" name="imageURL" value=<%=journal.imageURL%> />
+            <br><br>
+            <img src="<%=journal.imageURL%>" alt="Display image of <%=journal.title%> " width="500" height="600">
+            <br>
+            <p id=#publishTag></p>Publish Journal Entry:<input type="checkbox" name="publish" <%=journal.publish%> /></p>
+            <br>
+            <input type="submit" name="" value="Submit Changes"/><br>
+            <p id=#lastUpdated>last updated: <%=journal.updatedAt%></p><br>
+        </form>
+        <form action="/journal/<%=journal.id %>?_method=DELETE" method="POST">
+            <input id=#delete type="submit" value="Delete Profile" onclick="return confirm('Your Journal entry will be removed from Journal Journey. Are you sure?');">
+          </form>
+      
+          <br /><br />
+          <a href="/journal/">Back to Journal Journey</a>
+          <footer>
+            <p>© 2021 Blue Baby Yoda Productions</p>
+            <p>Love, Love</p>
+          </footer>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="/css/app.css" rel="stylesheet" type="text/css">
+
+    <title>Journal Journey</title>
+</head>
+<body>
+    <h1>Journal Journey</h1>
+    <br>
+
+    
+    <h2>Journals:</h2>
+    <p>Click on a title to start your Journal Journey... we hope you enjoy</p>
+    <ul id=#journalList>
+        <% for (let i = 0; i < journal.length; i++ ) { %>
+            <li>
+                <!-- SHOW link here  -->
+                <a href="/journal/<%=journal[i].id%>"><%=journal[i].title%></a><br>
+            </li>
+        <% } %>
+    </ul>
+    
+    <!-- Author log In  -->
+    <h3> <a href='#'>Author Log In</a></h3>
+</body>
+</html>
