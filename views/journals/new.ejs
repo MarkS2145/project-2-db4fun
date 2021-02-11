@@ -8,11 +8,11 @@
 <body>
     <h1>Journal Creation</h1>
     <!-- NOTE: Action will be the route, method will be the HTTP verb -->
-    <form action="/journal" method="POST">
+    <form action="/journal/" method="POST">
         <p id=#titleTag>Title:<input type="text" name="title" /></p><br/>
         <p id=#bodyTag>Body:<textarea id=#journalBody name="body" rows="7" cols="50" >Write journal entry here...</textarea></p><br/>
         <p id=#bodyTag>Image URL:<input type="text" name="imageURL" /></p>
-        <p id=#publishTag></p>Publish Journal Entry:<input type="checkbox" name="publish" <%=journal.publish%> /></p>
+        <p id=#publishTag></p>Publish Journal Entry:<input type="checkbox" name="publish"/></p>
         <br><br>
         <input type="submit" name="" value="Add Journal"/><br>
     </form>

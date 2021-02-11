@@ -9,7 +9,8 @@
     <h1><%=journal.title%></h1>
     <img src="<%=journal.imageURL%>" alt="Display image of <%=journal.title%> " width="500" height="600">
     <br>
-    <p id=#journalBody>Body:<textarea id=#body readonly=true name="body" rows="100" cols="100" ><%=journal.body%></textarea></p>
+    <p id=#journalBody>Body:</p>
+    <textarea id=#body readonly=true name="body" rows="40" cols="100" ><%=journal.body%></textarea>
     
     <p id=#lastUpdated>last updated: <%=journal.updatedAt%></p><br>
 

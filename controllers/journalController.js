@@ -22,6 +22,8 @@ router.get('/new', (req, res) => {
 router.post('/', (req, res) => {
   console.log(req.body)
 
+  req.body.publish = ( req.body.publish == 'checked' ? true : false);
+
   JournalModel.create(req.body).then((journals) => {
     res.redirect('/journal/')
   })
@@ -31,6 +33,7 @@ router.post('/', (req, res) => {
 router.get('/:id/edit', (req, res) => {
 
   console.log("Edit journal by id: " + req.params.id)  ;
+
   // Sequelize
 
   JournalModel.findByPk(req.params.id, {
@@ -41,6 +44,10 @@ router.get('/:id/edit', (req, res) => {
     //     console.log(user.id);
     //     //console.log(teams);
         //console.log(player.teams);
+        console.log("/journal/edit/:id/ before ternary: " + journal.publish);
+        journal.publish = ( journal.publish == true ? 'checked' : '' );
+        console.log("/journal/edit/:id/ after ternary: " + journal.publish);
+
         res.render('../views/journals/edit.ejs', { 
           journal, 
           //teams 
@@ -63,6 +70,8 @@ router.get('/:id', (req, res) => {
       //     console.log(user.id);
       //     //console.log(teams);
           //console.log(player.teams);
+          journal.publish = ( journal.publish == true ? 'checked' : '' );
+
           res.render('../views/journals/show.ejs', { 
             journal, 
             //teams 
@@ -135,6 +144,9 @@ router.delete('/:id', (req, res) => {
 
 //RR6: EDIT HTTPVerb: PUT Purpose: Update Journal info SEQ: UPDATE
 router.put('/:id', (req, res) => {
+
+  req.body.publish = ( req.body.publish == 'checked' ? true : false);
+
   JournalModel.update(req.body, {
       where: { id: req.params.id },
       returning: true,

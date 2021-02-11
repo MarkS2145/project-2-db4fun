@@ -10,7 +10,7 @@
         <h1>Edit <%=journal.name%> Journal Page</h1>
         <form action="/journal/<%=journal.id%>?_method=PUT" method="POST">
             <p id=#titleTag>Title:</p><input type="text" name="title" value="<%=journal.title %>"/><br/>
-             <p id=#journalBodyTag></p>Body:</p><textarea id=#biody name="body" rows="7" cols="50" ><%=journal.body%></textarea>
+             <p id=#journalBodyTag></p>Body:</p><textarea id=#biody name="body" rows="40" cols="100" ><%=journal.body%></textarea>
             <br>
             <br>
             <p id=#imageURLTag>imageURL:</p><input type="text" name="imageURL" value=<%=journal.imageURL%> />
