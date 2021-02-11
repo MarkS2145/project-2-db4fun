@@ -86,6 +86,20 @@ You have the following routes available.
 
 - GET `localhost:3000/profile/:id`
 
+
+#### Author Routes
+Author implements all ___**seven restful routes**___ as shown below in the order they are listed in the authorController.
+RR = Restful routes.
+- RR1: INDEX HTTPVerb: GET Purpose: redirect to welcome page SEQ: n/a
+- RR2: NEW HTTPVerb: GET Purpose: Display form for NEW Author SEQ: n/a
+- RR3: CREATE HTTPVerb: POST Purpose: Add NEW Author to db SEQ: CREATE
+- RR5: SHOW HTTPVerb: GET Purpose: Show Edit for an Author SEQ: FINDBYPK
+- RR4: SHOW HTTPVerb: GET Purpose: Show one Player SEQ: FINDBYPK
+- //Login GET Route - displays page
+- RR7: DESTROY HTTPVerb: DELETE Purpose: Destroy User SEQ: DESTROY
+- RR6: EDIT HTTPVerb: PUT Purpose: Update Player info SEQ: UPDATE
+
+
 <br>
 
 ## Additional Resources

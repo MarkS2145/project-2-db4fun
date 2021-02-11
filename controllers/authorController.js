@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
   });
 });  //Done
 
-//RR2: NEW HTTPVerb: GET Purpose: Display form for NEW Pokemon SEQ: n/a
+//RR2: NEW HTTPVerb: GET Purpose: Display form for NEW Author SEQ: n/a
 router.get('/new', (req, res) => {
   console.log('/new GET caught 003 renders(new.ejs)');
   res.render('../views/authors/new.ejs');
@@ -27,7 +27,7 @@ router.post('/', (req, res) => {
   })
 });
 
-//RR4: SHOW HTTPVerb: GET Purpose: Show Edit for an Author SEQ: FINDBYPK
+//RR5: SHOW HTTPVerb: GET Purpose: Show Edit for an Author SEQ: FINDBYPK
 router.get('/:id/edit', (req, res) => {
 
   console.log("Edit author by id: " + req.params.id)  ;
@@ -133,7 +133,7 @@ router.delete('/:id', (req, res) => {
 
 });
 
-//RR5: EDIT HTTPVerb: PUT Purpose: Update Player info SEQ: UPDATE
+//RR6: EDIT HTTPVerb: PUT Purpose: Update Player info SEQ: UPDATE
 router.put('/:id', (req, res) => {
     AuthorModel.update(req.body, {
       where: { id: req.params.id },
