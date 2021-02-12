@@ -5,6 +5,7 @@ const router = express.Router();
 const UserModel = require("../models").User;
 const AuthorModel = require('../models').Author;
 const JournalModel = require('../models').Journal;
+const UserJournalModel = require('../models').UserJournal;
 
 //BASE ROUTE === app.use("/journal"
 
@@ -19,6 +20,13 @@ router.get('/', (req, res) => {
 router.get('/new', (req, res) => {
   console.log('/new GET caught 003 renders(new.ejs)');
   res.render('../views/journals/new.ejs');
+});
+
+//RR2.5: NEW HTTPVerb: GET Purpose: Display form for NEW Journal SEQ: n/a
+router.get('/new/user/:id', (req, res) => {
+  console.log('/new/user/:id GET caught RR2.5 renders(new.ejs)');
+  let userId = req.params.id;
+  res.render('../views/journals/new.ejs', { userId });
 });
   
 //RR3: CREATE HTTPVerb: POST Purpose: Add NEW Journal to db SEQ: CREATE

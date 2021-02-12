@@ -70,23 +70,40 @@ This creates a new seed file with a time stamp appended to the front of it as sh
 
 We can now edit this file to add our seed Author data for as many authors as we wish to strat out with, or none.  It's our choice.
 
+## dB Layout
+We have four tables implemented.
+![Data Base diagram for Journal Journey](./assets/JournalJourneydBDiagram.png?raw=true)
+
+1. **User Table** - User provides information at sign up.
+- If user wants to become an authr and contribute journal entries they sign up for that.
+
+2. **Author table** - User provides information as an Author.  This information is used for the Author Profile page. Authors can contribute Journal Entries to the dB.
+
+3. **Journal** - Authors write Journal entries providing the information.  They can choose a publish date for the Journal to be published on.  This allows them to have saved work in progress prior to it being availablel for all users.
+
+4.  **User Journal Association table** - This provides the join of the users chosing journals to reference later.
+
 
 
 ## Routes
 
 You have the following routes available.
 
-#### controllers/authController.js
+### controllers/authController.js
 
+#### AuthController
 - GET and POST `localhost:3000/auth/signup`
 - GET and POST `localhost:3000/auth/login`
 - GET `localhost:3000/auth/logout`
 
 #### UserController Routes
-
+Provides routes for users to look at their Sign Up information, edit it and delete their account.
 - `/users/profile/:id` - GET Route
 - `/users/:id` - DELETE route
 - `/users/profile/:id`- PUT Route for edit
+
+
+
 
 
 

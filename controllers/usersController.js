@@ -4,8 +4,30 @@ const router = express.Router();
 const UserModel = require("../models").User;
 const AuthorModel = require('../models').Author;
 const JournalModel = require('../models').Journal;
+const UserJournalModel = require('../models').UserJournal;
 
 //BASE URL users/
+
+// SHOW ROUTE - GET ONE FRUIT
+router.get("/:id", (req, res) => {
+  UserModel.findByPk(req.params.id, {
+    include: [
+      {
+        model: UserModel,
+        attributes: ["id","username"],
+      },
+      {
+        model: UserJournalModel,
+      },
+    ],
+    //attributes: ["name", "color", "readyToEat"],
+  }).then((user) => {
+    console.log("SHOW User + journal obj[]" + user);
+    res.render("users/show.ejs", {     
+      user,
+    });
+  });
+});
 
 // GET USERS PROFILE
 router.get("/profile/:id", (req, res) => {

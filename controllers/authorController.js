@@ -4,6 +4,7 @@ const router = express.Router();
 const UserModel = require("../models").User;
 const AuthorModel = require('../models').Author;
 const JournalModel = require('../models').Journal;
+const UserJournalModel = require('../models').UserJournal;
 
 //BASE ROUTE === app.use("/author"
 
@@ -16,8 +17,17 @@ router.get('/', (req, res) => {
 
 //RR2: NEW HTTPVerb: GET Purpose: Display form for NEW Author SEQ: n/a
 router.get('/new', (req, res) => {
-  console.log('/new GET caught 003 renders(new.ejs)');
+  // console.log('/new GET caught RR2 renders(new.ejs)');
+  // console.log(UserModel.id, UserModel.name);
   res.render('../views/authors/new.ejs');
+});
+
+//RR2.5: NEW HTTPVerb: GET Purpose: Display form for NEW Author from user SEQ: n/a
+router.get('/new/user/:id', (req, res) => {
+  console.log('/new/user/:id GET caught RR2.5 renders(new.ejs w/ user.id)');
+  console.log('/new/user/:id: ' + req.params.id);
+  let userId = req.params.id;
+  res.render('../views/authors/new.ejs', { userId } );
 });
   
 //RR3: CREATE HTTPVerb: POST Purpose: Add NEW Author to db SEQ: CREATE
@@ -26,6 +36,16 @@ router.post('/', (req, res) => {
 
   AuthorModel.create(req.body).then((authors) => {
     res.redirect('/author/')
+  })
+});
+
+//RR3.5: CREATE HTTPVerb: POST Purpose: Add NEW Author to db SEQ: CREATE
+router.post('/user/:id', (req, res) => {
+  console.log("RR3.5 new user CREATE, body: " + req.body + "req.params.id: " + req.params.id );
+  let userId = req.params.id;
+
+  AuthorModel.create(req.body).then((authors) => {
+    res.redirect('/users/profile/'+ userId)
   })
 });
 

@@ -6,17 +6,21 @@
     <title>New Author Sign Up</title>
 </head>
 <body>
-    <h1>Author Bio Creation</h1>
+    <h1>Become a New Author</h1>
     <!-- NOTE: Action will be the route, method will be the HTTP verb -->
-    <form action="/author" method="POST">
+    <form action="/author/user/<%=userId%>" method="POST">
         name: <input type="text" name="name" /><br/>
         <textarea id="bio" name="bio" rows="7" cols="50" >add bio details here...</textarea>
         <br>
         <textarea id="valediction"  name="valediction" rows="2" cols="50" >add valediction here...</textarea>
         <br>
         imageURL:<input type="text" name="imageURL" />
-        <br><br>
+        <br>
         <input type="submit" name="" value="Add Author"/><br>
     </form>
+
+    <!-- Return to users profile  -->
+    <p>Not sure you wnat to be an author... click link below to:</p>
+    <h3> <a href='/users/profile/<%=userId%>'>Return to your Profile Page</a></h3>
 </body>
 </html>

@@ -10,7 +10,12 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Journal.belongsTo(models.Author, { foreignKey: "authorId" });
+      Journal.belongsToMany(models.User, {
+        through: "UserJournal",
+        foreignKey: "journalId",
+        otherKey: "userId",
+      });
     }
   };
   Journal.init({
@@ -19,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
     imageURL: DataTypes.STRING,
     publish: DataTypes.BOOLEAN,
     publishDate: DataTypes.DATE,
-    authorID: DataTypes.INTEGER
+    authorId: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Journal',

@@ -25,9 +25,6 @@ module.exports = {
         type: Sequelize.DATE,
         defaultValue: new Date(),
       },
-      authorID: {
-        type: Sequelize.INTEGER
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
@@ -37,7 +34,17 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: new Date(),
-      }
+      },
+      // Below is different than fruit app
+      authorId: {
+        type: Sequelize.INTEGER,
+        referecences: {
+          model: 'Author',
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL',
+      },
     });
   },
   down: async (queryInterface, Sequelize) => {

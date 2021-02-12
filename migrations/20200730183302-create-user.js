@@ -31,7 +31,17 @@ module.exports = {
         type: Sequelize.DATE,
         defaultValue: new Date(),
       },
-    });
+      // Below is different than fruit app
+      authorId: {
+        type: Sequelize.INTEGER,
+        referecences: {
+          model: 'Author',
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL',
+      },
+    })
   },
   down: async (queryInterface, Sequelize) => {
     await queryInterface.dropTable("Users");

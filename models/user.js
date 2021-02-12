@@ -10,9 +10,11 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      User.hasOne(models.Author, {
+      User.belongsTo(models.Author, {foreignKey: 'authorId'});
+      User.belongsToMany(models.Journal, {
+        through: "UserJournal",
         foreignKey: "userId",
-        onDelete: 'CASCADE',
+        otherKey: "journalId",
       });
     }
   };
@@ -21,6 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     password: DataTypes.STRING,
     email: DataTypes.STRING,
     subscribed: DataTypes.BOOLEAN,
+    //authorId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'User',
