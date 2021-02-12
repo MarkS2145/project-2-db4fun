@@ -26,20 +26,20 @@ router.get("/favorites", (req, res) => {
 
 
 
-  UserModel.findByPk(userId, {
-    include: [
-      { model: UserJournalModel },
-      { model: JournalModel  },
-    ]
-  }).then( (favoritejournals) => {
-    console.log(favoritejournals);
-  });
+  // UserModel.findByPk(userId, {
+  //   include: [
+  //     { model: UserJournalModel },
+  //     { model: JournalModel  },
+  //   ]
+  // }).then( (favoritejournals) => {
+  //   console.log(favoritejournals);
+  // });
 
   //UserJournalModel.findByPk(userId).then((favoritejournals) => {
 
     
-    // UserJournalModel.findAll( {
-    //   where: { userId: userId }, 
+    UserJournalModel.findAll( {
+      where: { userId: userId }, 
       // include: [
       //   { 
       //     where {
@@ -49,16 +49,17 @@ router.get("/favorites", (req, res) => {
       //     attributes: [ "title" ]
       //    },
       // ]
-    // }).then( (favoritejournalids) => {
-    //   console.log(favoritejournalids);
+    }).then( (favoritejournalids) => {
+      console.log(favoritejournalids);
 
-    //   JournalModel.findByPk( favoritejournalids.journalId 
+    // JournalModel.findByPk( favoritejournalids.journalId 
     //     ).then( (favoritejournals) => {
     //     console.log(favoritejournals);
-    // res.render("journals/favorites.ejs", {
-    //     favoritejournals
-      // });
-  // });
+    console.log(favoritejournalids[0].journalId);
+    res.render("journals/favorites.ejs", {
+      favoritejournalids, userId
+      });
+  });
 });
 
 
