@@ -11,10 +11,56 @@ const UserJournalModel = require('../models').UserJournal;
 
 //RR1: INDEX HTTPVerb: GET Purpose: redirect to Journals page SEQ: n/a
 router.get('/', (req, res) => {
+  let userId = req.user.id;
   JournalModel.findAll().then( (journal) => {
-    res.render('../views/journals/index.ejs', { journal });
+    res.render('../views/journals/index.ejs', { journal, userId });
   });
 });  //Done
+
+// SHOW ROUTE - GET ONE FRUIT
+router.get("/favorites", (req, res) => {
+  
+  let userId = req.user.id;
+
+  console.log("Journal Favorites called by userId: "  + userId);
+
+
+
+  UserModel.findByPk(userId, {
+    include: [
+      { model: UserJournalModel },
+      { model: JournalModel  },
+    ]
+  }).then( (favoritejournals) => {
+    console.log(favoritejournals);
+  });
+
+  //UserJournalModel.findByPk(userId).then((favoritejournals) => {
+
+    
+    // UserJournalModel.findAll( {
+    //   where: { userId: userId }, 
+      // include: [
+      //   { 
+      //     where {
+      //       id: userId
+      //     }
+      //     model: JournalModel,
+      //     attributes: [ "title" ]
+      //    },
+      // ]
+    // }).then( (favoritejournalids) => {
+    //   console.log(favoritejournalids);
+
+    //   JournalModel.findByPk( favoritejournalids.journalId 
+    //     ).then( (favoritejournals) => {
+    //     console.log(favoritejournals);
+    // res.render("journals/favorites.ejs", {
+    //     favoritejournals
+      // });
+  // });
+});
+
 
 //RR2: NEW HTTPVerb: GET Purpose: Display form for NEW Journal SEQ: n/a
 router.get('/new', (req, res) => {

@@ -8,7 +8,7 @@ const UserJournalModel = require('../models').UserJournal;
 
 //BASE URL users/
 
-// SHOW ROUTE - GET ONE FRUIT
+// SHOW ROUTE - GET ONE User
 router.get("/:id", (req, res) => {
   UserModel.findByPk(req.params.id, {
     include: [

@@ -9,22 +9,21 @@
     <title>Journal Journey</title>
 </head>
 <body>
-    <h1>Journal Journey</h1>
+    <h1><%=req.user.username%> Favorite Journals</h1>
     <br>
 
-    
     <h2>Journals:</h2>
-    <p>Click on a title to start your Journal Journey... we hope you enjoy</p>
+    <p>Click on a title to continue enjoying your Journal Journey</p>
     <ul id=#journalList>
-        <% for (let i = 0; i < journal.length; i++ ) { %>
+        <% for (let i = 0; i < favoritejournals.length; i++ ) { %>
             <li>
                 <!-- SHOW link here  -->
-                <a href="/journal/<%=journal[i].id%>"><%=journal[i].title%></a><br>
+                <a href="/journal/<%=favoritejournals[i].journalId%>"><%=journal[i].title%></a><br>
             </li>
         <% } %>
     </ul>
     
     <!-- Return to users profile  -->
-    <h3> <a href='/users/profile/<%=userId%>'>Return to your Profile Page</a></h3>
+    <h3> <a href='/users/profile/<%=req.user.id>'>Return to your Profile Page</a></h3>
 </body>
 </html>
