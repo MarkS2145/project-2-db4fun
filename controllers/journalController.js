@@ -19,7 +19,8 @@ router.get('/', (req, res) => {
 //RR2: NEW HTTPVerb: GET Purpose: Display form for NEW Journal SEQ: n/a
 router.get('/new', (req, res) => {
   console.log('/new GET caught 003 renders(new.ejs)');
-  res.render('../views/journals/new.ejs');
+  let userId = req.user.id; // Comes from token when user logged in.
+  res.render('../views/journals/new.ejs', { userId });
 });
 
 //RR2.5: NEW HTTPVerb: GET Purpose: Display form for NEW Journal SEQ: n/a
@@ -37,6 +38,27 @@ router.post('/', (req, res) => {
 
   JournalModel.create(req.body).then((journals) => {
     res.redirect('/journal/')
+  })
+});
+
+
+
+//RR3.5: CREATE HTTPVerb: POST Purpose: Add Journal to favorites SEQ: CREATE
+router.post('/:id/favorite', (req, res) => {
+
+  // I could add this pseudo code into this one function to ONLY use verify token here for adding to favorites by a logged in user
+  //const token = require('verifytoken.file');
+  // token();
+
+  console.log(req.body)
+
+  UserModel.findByPk(req.user.id).then( (user) => {
+    JournalModel.findByPk(req.params.id).then((journal) => {
+      //addJournal needs to match the models.Journal entry in  User associations in model file
+      user.addJournal(journal).then( () => {
+        res.redirect('/journal/' + req.params.id);
+      });
+    })
   })
 });
 
@@ -95,52 +117,6 @@ router.get('/:id', (req, res) => {
 router.get('/login', (req, res) => {
     res.render('../views/journals/login.ejs')
   } );
-  
-// Login POST Route - determines if login successful from db
-// router.post('/login', (req, res) => {
-//   try {
-
-//     console.log("Trying login");
-
-//     User.findAll({
-//       where: {
-//         username: req.body.username,
-//         password: req.body.password
-//       }
-//     }).then((user) => {
-
-//       console.log(user);
-
-//       console.log(user.id);
-
-//       //LOGIN SUCCESSFUL
-//       if (user != "") {
-//         console.log("Login success");
-
-//         console.log(user[0].id);
-
-//         res.redirect('/user/profile/'+ user[0].id);
-//       }
-//       else {
-//         console.log("Log in failed... try again")
-//         res.render('user/login');
-//       }
-
-//     });
-//   }
-//   catch (error) {
-//     console.error(error);
-//     res.render('user');
-//   }
-// });
-
-//Sign Up GET route
-// router.get('/signup', (req, res) => {
-
-//     console.log('/user GET caught 004, renders Sign Up page');
-
-//     res.render('../views/user/signup.ejs')
-//   } );
 
 //RR7: DESTROY HTTPVerb: DELETE Purpose: Destroy Journal SEQ: DESTROY
 router.delete('/:id', (req, res) => {

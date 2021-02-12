@@ -39,7 +39,7 @@ module.exports = {
       authorId: {
         type: Sequelize.INTEGER,
         referecences: {
-          model: 'Author',
+          model: 'Authors',
           key: 'id'
         },
         onUpdate: 'CASCADE',

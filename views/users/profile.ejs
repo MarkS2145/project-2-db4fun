@@ -13,8 +13,16 @@
     <a href="/author/">View Authors</a>
 
     <h2>Authoring Section:</h2>
-    <a href="/author/new/user/<%=user.id%>">Sign Up as a NEW Author</a><br>
-    <a href="/journal/new/user/<%=user.id%>">Create a new Journal Entry</a>
+    <% if ( user.authorId==null ) { %>
+      <a href="/author/new/">Sign Up as a NEW Author</a><br>
+    <% } else { %>
+      <a href="/author/<%=user.authorId%>/edit/">Edit your Author Bio</a><br>
+    <% } %>
+
+    
+    
+    
+    <a href="/journal/new/>">Create a new Journal Entry</a>
     
     <br><br><br>
 

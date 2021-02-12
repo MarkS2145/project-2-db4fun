@@ -10,43 +10,32 @@ const UserJournalModel = require('../models').UserJournal;
 
 //RR1: INDEX HTTPVerb: GET Purpose: redirect to welcome page SEQ: n/a
 router.get('/', (req, res) => {
+  let userId = req.user.id;
   AuthorModel.findAll().then( (authors) => {
-    res.render('../views/authors/index.ejs', { authors });
+    res.render('../views/authors/index.ejs', { authors, userId });
   });
 });  //Done
 
 //RR2: NEW HTTPVerb: GET Purpose: Display form for NEW Author SEQ: n/a
 router.get('/new', (req, res) => {
-  // console.log('/new GET caught RR2 renders(new.ejs)');
-  // console.log(UserModel.id, UserModel.name);
-  res.render('../views/authors/new.ejs');
-});
-
-//RR2.5: NEW HTTPVerb: GET Purpose: Display form for NEW Author from user SEQ: n/a
-router.get('/new/user/:id', (req, res) => {
-  console.log('/new/user/:id GET caught RR2.5 renders(new.ejs w/ user.id)');
-  console.log('/new/user/:id: ' + req.params.id);
-  let userId = req.params.id;
-  res.render('../views/authors/new.ejs', { userId } );
+  console.log(req.user.id);
+  let userId = req.user.id;
+  res.render('../views/authors/new.ejs', { userId });
 });
   
 //RR3: CREATE HTTPVerb: POST Purpose: Add NEW Author to db SEQ: CREATE
 router.post('/', (req, res) => {
-  console.log(req.body)
+  let userId = req.user.id;
 
-  AuthorModel.create(req.body).then((authors) => {
-    res.redirect('/author/')
-  })
-});
+  console.log("RR3.5 new author requested by " + userId + " CREATE, body: " + req.body);
 
-//RR3.5: CREATE HTTPVerb: POST Purpose: Add NEW Author to db SEQ: CREATE
-router.post('/user/:id', (req, res) => {
-  console.log("RR3.5 new user CREATE, body: " + req.body + "req.params.id: " + req.params.id );
-  let userId = req.params.id;
+  UserModel.findByPk(userId).then((user) => {
+    user.createAuthor(req.body).then((userauthor) => {
 
-  AuthorModel.create(req.body).then((authors) => {
-    res.redirect('/users/profile/'+ userId)
-  })
+      res.redirect('/users/profile/' + userId);
+
+    });
+  });
 });
 
 //RR5: SHOW HTTPVerb: GET Purpose: Show Edit for an Author SEQ: FINDBYPK
