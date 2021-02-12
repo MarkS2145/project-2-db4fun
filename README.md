@@ -82,6 +82,14 @@ You have the following routes available.
 - GET and POST `localhost:3000/auth/login`
 - GET `localhost:3000/auth/logout`
 
+#### UserController Routes
+
+- `/users/profile/:id` - GET Route
+- `/users/:id` - DELETE route
+- `/users/profile/:id`- PUT Route for edit
+
+
+
 #### controllers/usersController.js
 
 - GET `localhost:3000/profile/:id`
