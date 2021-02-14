@@ -6,6 +6,8 @@ const AuthorModel = require('../models').Author;
 const JournalModel = require('../models').Journal;
 const UserJournalModel = require('../models').UserJournal;
 
+
+
 //BASE URL users/
 
 // SHOW ROUTE - GET ONE User

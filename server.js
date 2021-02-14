@@ -29,6 +29,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.use(express.static("public"));
 
+
 // HOMEPAGE
 app.get("/", (req, res) => {
   res.render("users/index.ejs");
