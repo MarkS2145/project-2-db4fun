@@ -70,12 +70,12 @@ router.get('/new', (req, res) => {
   res.render('../views/journals/new.ejs', { userId });
 });
 
-//RR2.5: NEW HTTPVerb: GET Purpose: Display form for NEW Journal SEQ: n/a
-router.get('/new/user/:id', (req, res) => {
-  console.log('/new/user/:id GET caught RR2.5 renders(new.ejs)');
-  let userId = req.params.id;
-  res.render('../views/journals/new.ejs', { userId });
-});
+// //RR2.5: NEW HTTPVerb: GET Purpose: Display form for NEW Journal SEQ: n/a
+// router.get('/new/user/:id', (req, res) => {
+//   console.log('/new/user/:id GET caught RR2.5 renders(new.ejs)');
+//   let userId = req.params.id;
+//   res.render('../views/journals/new.ejs', { userId });
+// });
   
 //RR3: CREATE HTTPVerb: POST Purpose: Add NEW Journal to db SEQ: CREATE
 router.post('/', (req, res) => {
@@ -92,11 +92,6 @@ router.post('/', (req, res) => {
 
 //RR3.5: CREATE HTTPVerb: POST Purpose: Add Journal to favorites SEQ: CREATE
 router.post('/:id/favorite', (req, res) => {
-
-  // I could add this pseudo code into this one function to ONLY use verify token here for adding to favorites by a logged in user
-  //const token = require('verifytoken.file');
-  // token();
-
   console.log(req.body)
 
   UserModel.findByPk(req.user.id).then( (user) => {
@@ -161,9 +156,9 @@ router.get('/:id', (req, res) => {
 });
 
 //Login GET Route - displays page
-router.get('/login', (req, res) => {
-    res.render('../views/journals/login.ejs')
-  } );
+// router.get('/login', (req, res) => {
+//     res.render('../views/journals/login.ejs')
+//   } );
 
 //RR7: DESTROY HTTPVerb: DELETE Purpose: Destroy Journal SEQ: DESTROY
 router.delete('/:id', (req, res) => {

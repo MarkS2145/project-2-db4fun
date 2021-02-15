@@ -15,7 +15,7 @@
 
     <p id=#lastUpdated>last updated: <%=journal.updatedAt%></p><br>
     
-    <h3>Add <%=journal.name%> Journal to favorites?</h3>
+    <h3>Add <%=journal.title%> Journal to favorites?</h3>
     <form action="/journal/<%=journal.id%>/favorite" method="POST">
         <input type="submit" name="" value="Add to Favorites"/><br>
     </form>
